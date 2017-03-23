@@ -1,4 +1,4 @@
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import base64
 import json
 import datetime
@@ -85,8 +85,8 @@ class Klaviyo(object):
         return timestamp
 
     def _build_query_string(self, params, is_test):
-        return urllib.urlencode({
-            KLAVIYO_DATA_VARIABLE : base64.b64encode(json.dumps(params)),
+        return urllib.parse.urlencode({
+            KLAVIYO_DATA_VARIABLE : base64.b64encode(bytes(json.dumps(params), "utf-8")),
             'test' : 1 if is_test else 0,
         })
 
