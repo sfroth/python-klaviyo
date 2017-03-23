@@ -112,7 +112,7 @@ class Klaviyo(object):
         if response.text == '1':
             return True
         if response.text == '0':
-            return Talse
+            return False
         return response
 
     def _post(self, path, params):
